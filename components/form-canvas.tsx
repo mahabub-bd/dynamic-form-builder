@@ -47,7 +47,9 @@ export default function FormCanvas({
           Form Canvas
         </h2>
         <div
-          ref={drop}
+          ref={(node) => {
+            if (node) drop(node);
+          }}
           className={`min-h-[400px] border-2 rounded-lg p-4 ${
             isOver
               ? "border-primary border-dashed bg-primary/5"
@@ -56,10 +58,7 @@ export default function FormCanvas({
         >
           {elements.length === 0 ? (
             <div className="text-center text-muted-foreground">
-              <p>Drag and drop elements here to build your form</p>
-              <p className="text-sm mt-2">
-                or click on elements in the sidebar
-              </p>
+              <p className="text-sm mt-2">Click on elements in the sidebar</p>
             </div>
           ) : (
             <div

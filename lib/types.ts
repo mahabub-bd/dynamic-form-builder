@@ -7,7 +7,8 @@ export type FormElementType =
   | "radio"
   | "date"
   | "file"
-  | "password";
+  | "password"
+  | "number";
 
 export type FormLayout = "one-column" | "two-columns";
 

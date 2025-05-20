@@ -59,14 +59,14 @@ export default function FormPreview({
         break;
 
       case "checkbox":
-        let checkboxValidation = z.boolean();
+        let checkboxValidation: z.ZodTypeAny;
         if (element.required) {
-          checkboxValidation = checkboxValidation.refine(
-            (val) => val === true,
-            {
-              message: "Required",
-            }
+          checkboxValidation = z.preprocess(
+            (val) => val === "on" || val === true,
+            z.literal(true, { errorMap: () => ({ message: "Required" }) })
           );
+        } else {
+          checkboxValidation = z.boolean().optional();
         }
         schemaObj[element.name] = checkboxValidation;
         break;
@@ -112,16 +112,15 @@ export default function FormPreview({
           });
         }
 
-        // Make it optional or required after applying other constraints
         if (element.required) {
           textValidation = textValidation.min(1, {
             message: "Required",
           });
-        } else {
-          textValidation = textValidation.optional();
         }
 
-        schemaObj[element.name] = textValidation;
+        schemaObj[element.name] = element.required
+          ? textValidation
+          : textValidation.optional();
         break;
 
       case "file":
@@ -133,9 +132,9 @@ export default function FormPreview({
         break;
 
       default:
-        let defaultValidation = z.string();
+        let defaultValidation: z.ZodTypeAny = z.string();
         if (element.required) {
-          defaultValidation = defaultValidation.min(1, {
+          defaultValidation = (defaultValidation as z.ZodString).min(1, {
             message: "Required",
           });
         } else {
@@ -365,7 +364,8 @@ export default function FormPreview({
                                       ])
                                     : field.onChange(
                                         field.value?.filter(
-                                          (value) => value !== option.value
+                                          (value: string) =>
+                                            value !== option.value
                                         )
                                       );
                                 }}

@@ -1,18 +1,23 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Eye, EyeOff } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Eye, EyeOff } from "lucide-react";
+import * as React from "react";
 
-interface PasswordInputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+interface PasswordInputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {}
 
 export function PasswordInput({ className, ...props }: PasswordInputProps) {
-  const [showPassword, setShowPassword] = React.useState(false)
+  const [showPassword, setShowPassword] = React.useState(false);
 
   return (
     <div className="relative">
-      <Input type={showPassword ? "text" : "password"} className="pr-10" {...props} />
+      <Input
+        type={showPassword ? "text" : "password"}
+        className="pr-10"
+        {...props}
+      />
       <Button
         type="button"
         variant="ghost"
@@ -22,12 +27,17 @@ export function PasswordInput({ className, ...props }: PasswordInputProps) {
         tabIndex={-1}
       >
         {showPassword ? (
-          <EyeOff className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+          <EyeOff
+            className="h-4 w-4 text-muted-foreground"
+            aria-hidden="true"
+          />
         ) : (
           <Eye className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
         )}
-        <span className="sr-only">{showPassword ? "Hide password" : "Show password"}</span>
+        <span className="sr-only">
+          {showPassword ? "Hide password" : "Show password"}
+        </span>
       </Button>
     </div>
-  )
+  );
 }

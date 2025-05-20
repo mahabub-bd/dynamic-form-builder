@@ -1,0 +1,384 @@
+{
+  "project": {
+    "id": 10001,
+    "name": "UCB PLC Fraud Analyzer"
+  },
+  "Form": {
+    "FormId": 1,
+    "FormName": "UCBL FA ISSUE"
+  },
+  "FormFields": [
+    {
+      "FieldId": "1",
+      "FieldCaption": "Card No",
+      "FieldName": "Custom_001",
+      "FieldType": {
+        "Type": "text",
+        "DefaultValues": [],
+        "MaxLength": "20",
+        "ValueType": "NUMBERWITHASTERIX",
+        "Required": true
+      }
+    },
+    {
+      "FieldId": "2",
+      "FieldCaption": "Amount",
+      "FieldName": "Custom_002",
+      "FieldType": {
+        "Type": "text",
+        "DefaultValues": [],
+        "MaxLength": "20",
+        "ValueType": "NUMBERONLY",
+        "Required": true
+      }
+    },
+    {
+      "FieldId": "3",
+      "FieldCaption": "Currency",
+      "FieldName": "Custom_003",
+      "FieldType": {
+        "Type": "DropDown",
+        "DefaultValues": [
+          {
+            "label": "USD",
+            "value": "840"
+          },
+          {
+            "label": "BDT",
+            "value": "050"
+          },
+          {
+            "label": "EUR",
+            "value": "978"
+          }
+        ],
+        "MaxLength": "100",
+        "ValueType": "",
+        "Required": false
+      }
+    },
+    {
+      "FieldId": "4",
+      "FieldCaption": "Country",
+      "FieldName": "Custom_004",
+      "FieldType": {
+        "Type": "DropDown",
+        "DefaultValues": [
+          {
+            "label": "United States Of America",
+            "value": "840"
+          },
+          {
+            "label": "Bangladesh",
+            "value": "050"
+          },
+          {
+            "label": "Germany",
+            "value": "978"
+          }
+        ],
+        "MaxLength": "200",
+        "ValueType": "",
+        "Required": false
+      }
+    },
+    {
+      "FieldId": "5",
+      "FieldCaption": "State",
+      "FieldName": "Custom_005",
+      "FieldType": {
+        "Type": "text",
+        "DefaultValues": [],
+        "MaxLength": "200",
+        "ValueType": "TEXTONLY",
+        "Required": false
+      }
+    },
+    {
+      "FieldId": "6",
+      "FieldCaption": "Merchant Name",
+      "FieldName": "Custom_006",
+      "FieldType": {
+        "Type": "text",
+        "DefaultValues": [],
+        "MaxLength": "250",
+        "ValueType": "TEXTWITHNUMBER",
+        "Required": true
+      }
+    },
+    {
+      "FieldId": "7",
+      "FieldCaption": "Terminal Name",
+      "FieldName": "Custom_007",
+      "FieldType": {
+        "Type": "text",
+        "DefaultValues": [],
+        "MaxLength": "12",
+        "ValueType": "TEXTWITHNUMBER",
+        "Required": true
+      }
+    },
+    {
+      "FieldId": "8",
+      "FieldCaption": "Acquirer Name",
+      "FieldName": "Custom_008",
+      "FieldType": {
+        "Type": "DropDown",
+        "DefaultValues": [
+          {
+            "label": "UCB",
+            "value": "UCB"
+          },
+          {
+            "label": "CITY",
+            "value": "CITY"
+          },
+          {
+            "label": "BANK ASIA PLC",
+            "value": "BANK ASIA PLC"
+          }
+        ],
+        "MaxLength": "200",
+        "ValueType": "",
+        "Required": true
+      }
+    },
+    {
+      "FieldId": "9",
+      "FieldCaption": "Transaction Type",
+      "FieldName": "Custom_009",
+      "FieldType": {
+        "Type": "DropDown",
+        "DefaultValues": [
+          {
+            "label": "CARD",
+            "value": "CARD"
+          },
+          {
+            "label": "BQR",
+            "value": "BQR"
+          }
+        ],
+        "MaxLength": "200",
+        "ValueType": "",
+        "Required": true
+      }
+    },
+    {
+      "FieldId": "10",
+      "FieldCaption": "Transaction Status",
+      "FieldName": "Custom_010",
+      "FieldType": {
+        "Type": "DropDown",
+        "DefaultValues": [
+          {
+            "label": "Approve",
+            "value": "Approve"
+          },
+          {
+            "label": "Declined",
+            "value": "Declined"
+          }
+        ],
+        "MaxLength": "200",
+        "ValueType": "",
+        "Required": false
+      }
+    },
+    {
+      "FieldId": "11",
+      "FieldCaption": "Transaction Time",
+      "FieldName": "Custom_011",
+      "FieldType": {
+        "Type": "DATETIME",
+        "DefaultValues": [],
+        "MaxLength": "100",
+        "ValueType": "DATEANDTIME",
+        "Required": true
+      }
+    },
+    {
+      "FieldId": "12",
+      "FieldCaption": "Response Code",
+      "FieldName": "Custom_012",
+      "FieldType": {
+        "Type": "DropDown",
+        "DefaultValues": [
+          {
+            "label": "1",
+            "value": "1"
+          },
+          {
+            "label": "2",
+            "value": "2"
+          }
+        ],
+        "MaxLength": "5",
+        "ValueType": "",
+        "Required": true
+      }
+    },
+    {
+      "FieldId": "13",
+      "FieldCaption": "Transaction Id",
+      "FieldName": "Custom_013",
+      "FieldType": {
+        "Type": "text",
+        "DefaultValues": [],
+        "MaxLength": "30",
+        "ValueType": "NUMBERONLY",
+        "Required": true
+      }
+    },
+    {
+      "FieldId": "14",
+      "FieldCaption": "POS Condition Code",
+      "FieldName": "Custom_014",
+      "FieldType": {
+        "Type": "text",
+        "DefaultValues": [],
+        "MaxLength": "20",
+        "ValueType": "NUMBERONLY",
+        "Required": true
+      }
+    },
+    {
+      "FieldId": "15",
+      "FieldCaption": "POS Entry Mode",
+      "FieldName": "Custom_015",
+      "FieldType": {
+        "Type": "text",
+        "DefaultValues": [],
+        "MaxLength": "5",
+        "ValueType": "NUMBERONLY",
+        "Required": true
+      }
+    },
+    {
+      "FieldId": "16",
+      "FieldCaption": "STAN",
+      "FieldName": "Custom_016",
+      "FieldType": {
+        "Type": "text",
+        "DefaultValues": [],
+        "MaxLength": "8",
+        "ValueType": "NUMBERONLY",
+        "Required": true
+      }
+    },
+    {
+      "FieldId": "17",
+      "FieldCaption": "MCC",
+      "FieldName": "Custom_017",
+      "FieldType": {
+        "Type": "DropDown",
+        "DefaultValues": [
+          {
+            "label": "8062",
+            "value": "8062"
+          },
+          {
+            "label": "8063",
+            "value": "8063"
+          }
+        ],
+        "MaxLength": "4",
+        "ValueType": "",
+        "Required": true
+      }
+    },
+    {
+      "FieldId": "18",
+      "FieldCaption": "Bill Amount",
+      "FieldName": "Custom_018",
+      "FieldType": {
+        "Type": "text",
+        "DefaultValues": [],
+        "MaxLength": "8",
+        "ValueType": "NUMBERONLY",
+        "Required": true
+      }
+    },
+    {
+      "FieldId": "19",
+      "FieldCaption": "Card Status",
+      "FieldName": "Custom_019",
+      "FieldType": {
+        "Type": "text",
+        "DefaultValues": [],
+        "MaxLength": "3",
+        "ValueType": "NUMBERONLY",
+        "Required": true
+      }
+    },
+    {
+      "FieldId": "20",
+      "FieldCaption": "Card Expiry Date",
+      "FieldName": "Custom_020",
+      "FieldType": {
+        "Type": "text",
+        "DefaultValues": [],
+        "MaxLength": "4",
+        "ValueType": "NUMBERONLY",
+        "Required": true
+      }
+    },
+    {
+      "FieldId": "21",
+      "FieldCaption": "Customer Name",
+      "FieldName": "Custom_021",
+      "FieldType": {
+        "Type": "text",
+        "DefaultValues": [],
+        "MaxLength": "100",
+        "ValueType": "TEXTONLY",
+        "Required": true
+      }
+    },
+    {
+      "FieldId": "22",
+      "FieldCaption": "Contact No",
+      "FieldName": "Custom_022",
+      "FieldType": {
+        "Type": "text",
+        "DefaultValues": [],
+        "MaxLength": "11",
+        "ValueType": "NUMBERONLY",
+        "Required": true
+      }
+    },
+    {
+      "FieldId": "25",
+      "FieldCaption": "Assignee",
+      "FieldName": "Custom_025",
+      "FieldType": {
+        "Type": "CurrentUser",
+        "DefaultValues": [""],
+        "MaxLength": "",
+        "ValueType": "CurrentUser",
+        "Required": "NO"
+      }
+    },
+    {
+      "FieldId": "26",
+      "FieldCaption": "Rules",
+      "FieldName": "Custom_026",
+      "FieldType": {
+        "Type": "MultiCheck",
+        "DefaultValues": [
+          {
+            "label": "Rule 1",
+            "value": "Rule 1"
+          },
+          {
+            "label": "Rule 2",
+            "value": "Rule 2"
+          }
+        ],
+        "MaxLength": "",
+        "ValueType": "",
+        "Required": true
+      }
+    }
+  ]
+}

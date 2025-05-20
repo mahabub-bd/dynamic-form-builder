@@ -15,18 +15,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import type { FormElement } from "@/lib/types";
-import {
-  AlignLeft,
-  CalendarIcon,
-  CheckSquare,
-  CircleIcon,
-  Grip,
-  KeyIcon,
-  ListIcon,
-  TextIcon,
-  Upload,
-  X,
-} from "lucide-react";
+import { Grip, X } from "lucide-react";
 import { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { PasswordInput } from "./password-input";
@@ -66,7 +55,11 @@ export default function FormElementComponent({
     }),
   });
 
-  const [{ handlerId }, drop] = useDrop({
+  const [{ handlerId }, drop] = useDrop<
+    DragItem,
+    void,
+    { handlerId: string | symbol | null }
+  >({
     accept: "FORM_ELEMENT_CARD",
     collect(monitor) {
       return {
@@ -109,31 +102,6 @@ export default function FormElementComponent({
   });
 
   drag(drop(ref));
-
-  const getElementIcon = () => {
-    switch (element.type) {
-      case "text":
-        return <TextIcon className="h-4 w-4 text-primary" />;
-      case "password":
-        return <KeyIcon className="h-4 w-4 text-primary" />;
-      case "textarea":
-        return <AlignLeft className="h-4 w-4 text-primary" />;
-      case "select":
-        return <ListIcon className="h-4 w-4 text-primary" />;
-      case "checkbox":
-        return <CheckSquare className="h-4 w-4 text-primary" />;
-      case "checkbox-group":
-        return <CheckSquare className="h-4 w-4 text-primary" />;
-      case "radio":
-        return <CircleIcon className="h-4 w-4 text-primary" />;
-      case "date":
-        return <CalendarIcon className="h-4 w-4 text-primary" />;
-      case "file":
-        return <Upload className="h-4 w-4 text-primary" />;
-      default:
-        return null;
-    }
-  };
 
   const renderPreview = () => {
     switch (element.type) {
@@ -296,7 +264,9 @@ export default function FormElementComponent({
 
   return (
     <div
-      ref={preview}
+      ref={(node) => {
+        preview(node);
+      }}
       style={{ opacity: isDragging ? 0.5 : 1 }}
       data-handler-id={handlerId}
       className={`relative ${isSelected ? "ring-2 ring-primary" : ""}`}

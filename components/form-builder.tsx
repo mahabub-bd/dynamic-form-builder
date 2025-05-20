@@ -8,23 +8,13 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { FormElement, FormElementType, FormLayout } from "@/lib/types";
-import {
-  Code,
-  Eye,
-  HelpCircle,
-  LayoutGrid,
-  LayoutList,
-  PenTool,
-  Sparkles,
-  Trash2,
-} from "lucide-react";
+import { Code, Eye, LayoutGrid, PenTool, Sparkles, Trash2 } from "lucide-react";
 import { useRef, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -51,10 +41,7 @@ export default function FormBuilder() {
       label: `${type.charAt(0).toUpperCase() + type.slice(1)} Label`,
       name: `${type}${nextIdRef.current - 1}`,
       required: false,
-      placeholder:
-        type === "text" || type === "textarea"
-          ? "Enter text here..."
-          : undefined,
+      placeholder: type === "text" ? "Enter text here..." : undefined,
       options:
         type === "select" || type === "radio" || type === "checkbox-group"
           ? [
@@ -128,9 +115,7 @@ export default function FormBuilder() {
               field.FieldType.Required === true ||
               field.FieldType.Required === "YES",
             placeholder:
-              type === "text" || type === "textarea"
-                ? `Enter ${field.FieldCaption}...`
-                : undefined,
+              type === "text" ? `Enter ${field.FieldCaption}...` : undefined,
           };
 
           if (field.FieldType.MaxLength) {
@@ -279,7 +264,6 @@ export default function FormBuilder() {
                   htmlFor="one-column"
                   className="flex items-center gap-2 cursor-pointer"
                 >
-                  <LayoutList className="h-4 w-4 text-muted-foreground" />
                   One Column
                 </Label>
               </div>
@@ -289,7 +273,6 @@ export default function FormBuilder() {
                   htmlFor="two-columns"
                   className="flex items-center gap-2 cursor-pointer"
                 >
-                  <LayoutGrid className="h-4 w-4 text-muted-foreground" />
                   Two Columns
                 </Label>
               </div>
@@ -371,70 +354,6 @@ export default function FormBuilder() {
                   Code
                 </TabsTrigger>
               </TabsList>
-
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button variant="outline" className="flex items-center gap-2">
-                    <HelpCircle className="h-4 w-4" />
-                    How to Use
-                  </Button>
-                </DialogTrigger>
-                <DialogContent>
-                  <DialogHeader>
-                    <DialogTitle>How to Use the Form Builder</DialogTitle>
-                  </DialogHeader>
-                  <div className="space-y-4 mt-2">
-                    <p className="flex items-center gap-2">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary text-xs">
-                        1
-                      </span>
-                      Drag elements from the sidebar onto the canvas
-                    </p>
-                    <p className="flex items-center gap-2">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary text-xs">
-                        2
-                      </span>
-                      Click on an element to edit its properties
-                    </p>
-                    <p className="flex items-center gap-2">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary text-xs">
-                        3
-                      </span>
-                      Rearrange elements by dragging them within the canvas
-                    </p>
-                    <p className="flex items-center gap-2">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary text-xs">
-                        4
-                      </span>
-                      Choose between one or two column layout
-                    </p>
-                    <p className="flex items-center gap-2">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary text-xs">
-                        5
-                      </span>
-                      Import dynamic fields from JSON structure
-                    </p>
-                    <p className="flex items-center gap-2">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary text-xs">
-                        6
-                      </span>
-                      Export your form to save or share it
-                    </p>
-                    <p className="flex items-center gap-2">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary text-xs">
-                        7
-                      </span>
-                      Preview your form in the Preview tab
-                    </p>
-                    <p className="flex items-center gap-2">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary text-xs">
-                        8
-                      </span>
-                      Get the generated code in the Code tab
-                    </p>
-                  </div>
-                </DialogContent>
-              </Dialog>
             </div>
 
             <TabsContent value="editor" className="space-y-4 mt-2">

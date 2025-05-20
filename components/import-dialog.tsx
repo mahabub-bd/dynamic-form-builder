@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -10,36 +10,36 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Textarea } from "@/components/ui/textarea"
-import { Alert, AlertDescription } from "@/components/ui/alert"
-import { AlertCircle, FileJson, Clipboard } from "lucide-react"
+} from "@/components/ui/dialog";
+import { Textarea } from "@/components/ui/textarea";
+import { AlertCircle, Clipboard, FileJson } from "lucide-react";
+import { useState } from "react";
 
 interface ImportDialogProps {
-  onImport: (data: any) => void
+  onImport: (data: any) => void;
 }
 
 export default function ImportDialog({ onImport }: ImportDialogProps) {
-  const [jsonInput, setJsonInput] = useState("")
-  const [error, setError] = useState<string | null>(null)
-  const [open, setOpen] = useState(false)
+  const [jsonInput, setJsonInput] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [open, setOpen] = useState(false);
 
   const handleImport = () => {
     try {
-      const parsedData = JSON.parse(jsonInput)
+      const parsedData = JSON.parse(jsonInput);
 
       if (!parsedData.FormFields || !Array.isArray(parsedData.FormFields)) {
-        throw new Error("Invalid format: FormFields array is required")
+        throw new Error("Invalid format: FormFields array is required");
       }
 
-      onImport(parsedData)
-      setError(null)
-      setOpen(false)
-      setJsonInput("")
+      onImport(parsedData);
+      setError(null);
+      setOpen(false);
+      setJsonInput("");
     } catch (err) {
-      setError("Invalid JSON format. Please check your input.")
+      setError("Invalid JSON format. Please check your input.");
     }
-  }
+  };
 
   const handlePaste = () => {
     const sampleData = {
@@ -87,33 +87,35 @@ export default function ImportDialog({ onImport }: ImportDialogProps) {
           },
         },
       ],
-    }
+    };
 
-    setJsonInput(JSON.stringify(sampleData, null, 2))
-  }
+    setJsonInput(JSON.stringify(sampleData, null, 2));
+  };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline" className="w-full flex items-center gap-2">
           <FileJson className="h-4 w-4" />
-          Import Dynamic Fields
+          Import from JSON
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[625px]">
         <DialogHeader>
           <DialogTitle>Import Dynamic Fields</DialogTitle>
-          <DialogDescription>Paste your dynamic fields JSON structure below to generate a form.</DialogDescription>
+          <DialogDescription>
+            Paste your dynamic fields JSON structure below to generate a form.
+          </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <Textarea
             placeholder="Paste your JSON here..."
             value={jsonInput}
             onChange={(e) => {
-              setJsonInput(e.target.value)
-              setError(null)
+              setJsonInput(e.target.value);
+              setError(null);
             }}
-            className="min-h-[300px] font-mono text-sm"
+            className="min-h-[400px] font-mono text-sm"
           />
           {error && (
             <Alert variant="destructive">
@@ -123,7 +125,12 @@ export default function ImportDialog({ onImport }: ImportDialogProps) {
           )}
         </div>
         <DialogFooter>
-          <Button variant="outline" onClick={handlePaste} type="button" className="flex items-center gap-2">
+          <Button
+            variant="outline"
+            onClick={handlePaste}
+            type="button"
+            className="flex items-center gap-2"
+          >
             <Clipboard className="h-4 w-4" />
             Paste Sample
           </Button>
@@ -133,5 +140,5 @@ export default function ImportDialog({ onImport }: ImportDialogProps) {
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
